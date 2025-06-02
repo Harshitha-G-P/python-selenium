@@ -5,8 +5,8 @@
 ### Clone the project
 
 ```bash
-git clone https://github.com/nirtal85/Selenium-Python-Example.git
-cd selenium-python-example
+git clone https://github.com/Harshitha-G-P/python-selenium
+cd python-selenium
 ```
 
 ### Create and activate a virtual environment then Install project dependencies
@@ -84,10 +84,6 @@ brew install allure
 ```bash
 allure serve allure-results
 ```
-
-### View Results Online:
-
-[View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
 
 ## ℹ️ View Help And Other CLI Options
 
