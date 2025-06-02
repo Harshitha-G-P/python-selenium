@@ -1,42 +1,117 @@
-# Python-Selenium
+# Selenium Python
 
-This repository contains the base setup of an UI testing project,
-using Python, Selenium Webdriver and Page Object Model pattern.
+## ⚙️ Setup Instructions
 
-A simple search in DuckDuckGo to check that results are displayed is used as example
+### Clone the project
 
-# Requirements
+```bash
+git clone https://github.com/nirtal85/Selenium-Python-Example.git
+cd selenium-python-example
+```
 
-* Python 3.12.3
-* pip (24.0) and setuptools
-* [venv](<https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/>) (recommended)
+### Create and activate a virtual environment then Install project dependencies
 
-# Instalation
+#### For Windows:
+```bash
+pip install uv
+uv venv
+.\env\Scripts\activate
+uv sync --all-extras --dev
+```
 
-Assuming python, pip and venv are installed correctly:
+#### For Mac:
+```bash
+python3 -m pip install uv
+uv venv
+source .venv/bin/activate
+uv sync --all-extras --dev
+```
 
-1. Download or clone this repository 
-2. Open a terminal
-3. Go to the project root directory "/selenium-python-example/".
-4. Create a virtual environment: 
-   - (UBUNTU): `python3 -m venv .venv`
-   - (WINDOWS): `py -m venv venv`
-5. Activate the virtual environment executing the following script: 
-   - (UBUNTU): `source .venv/bin/activate`
-   - (WINDOWS): `.\venv\Scripts\activate`
-6. Execute the following command to download the necessary libraries:  `pip install -r requirements.txt`
+### Create .env File
 
+Create a `.env` file in the project root directory to securely store project secrets and configuration variables. This
+file will be used to define key-value pairs for various parameters required by the project. Add the following properties
+to the `.env` file:
 
-# Test Execution
+| Parameter              | Description                             | Example Value                 |
+|------------------------|-----------------------------------------|-------------------------------|
+| EMAIL                  | Your email address for authentication   | "your@email.com"              |
+| PASSWORD               | Your secret password for authentication | "your_secret_password"        |
+| VRT_APIURL             | Visual Regression Tracker API URL       | "https://vrt.example.com/api" |
+| VRT_PROJECT            | Visual Regression Tracker Project ID    | "project_id"                  |
+| VRT_CIBUILDID          | Visual Regression Tracker Build Number  | "build_number"                |
+| VRT_BRANCHNAME         | Visual Regression Tracker Branch Name   | "main"                        |
+| VRT_APIKEY             | Visual Regression Tracker API Key       | "your_api_key"                |
+| VRT_ENABLESOFTASSERT   | Enable Soft Assertions                  | True (or False)               |
+| MAILINATOR_API_KEY     | API Key for Mailinator service          | "your_mailinator_api_key"     |
+| MAILINATOR_DOMAIN_NAME | Domain name for Mailinator              | "your_mailinator_domain"      |
 
-1. Open a terminal
-2. From the project root directory run: `pytest -v --html=results/report.html`
+## 🏃‍♂️ Running Tests
 
-# Configuration
+```bash
+pytest --driver <firefox/chrome_headless>
+```
 
-By default, tests will be executed in Chrome (normal mode). Preferences can be changed in "/data/config.yaml" file
+When no browser was selected then chrome will be used.
 
-# Results
+* Run according to tags:
 
-To check the report, open the '/results/report.html' file once the execution has finished.
+```bash
+pytest -m <tag_name> --browser <firefox/chrome_headless>
+```
 
+## 📊 Viewing Test Results
+
+### Install Allure Commandline To View Test results
+
+#### For Windows:
+
+Follow the instructions [here](https://scoop.sh/) to install Scoop.<br>
+Run the following command to install Allure using Scoop:
+
+```bash
+scoop install allure
+```
+
+#### For Mac:
+
+```bash
+brew install allure
+```
+
+### View Results Locally:
+
+```bash
+allure serve allure-results
+```
+
+### View Results Online:
+
+[View allure results via Github pages](https://nirtal85.github.io/Selenium-Python-Example/)
+
+## ℹ️ View Help And Other CLI Options
+
+```bash
+pytest --help
+```
+
+### Pre Commit
+
+#### Run Pre Commit Checks Automatically
+
+```bash
+pre-commit install
+pre-commit install --hook-type commit-msg
+```
+
+#### Bump Pre Commit Hooks Version
+
+```bash
+pre-commit autoupdate
+```
+
+#### Run Pre Commit Checks Manually On The Entire Project
+
+```bash
+pre-commit run --all-files
+```
